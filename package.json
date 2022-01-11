@@ -1,0 +1,25 @@
+{
+  "name": "secretsanta",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "lint": "eslint . --fix && prettier --write \"**/*.js\" \"**/*.json\"",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KhrapkoVasyl/SecretSanta.git"
+  },
+  "author": "Khrapko Vasyl",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/KhrapkoVasyl/SecretSanta/issues"
+  },
+  "homepage": "https://github.com/KhrapkoVasyl/SecretSanta#readme",
+  "devDependencies": {
+    "eslint": "^8.6.0",
+    "prettier": "^2.5.1"
+  },
+  "dependencies": {}
+}
