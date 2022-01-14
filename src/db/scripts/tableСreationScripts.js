@@ -4,8 +4,8 @@ const userTableScript = `
 CREATE TABLE IF NOT EXISTS "user"
 (
     id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
-    first_name NVARCHAR(64)  NOT NULL,
-    last_name NVARCHAR(64)  NOT NULL
+    name NVARCHAR(64)  NOT NULL,
+    surname NVARCHAR(64)  NOT NULL
 );
 `;
 
