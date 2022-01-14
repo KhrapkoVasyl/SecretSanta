@@ -1,21 +1,8 @@
 'use strict';
 
 const db = require('../db/db');
+const insertUserWishService = require('./insertUserWishService');
 const userInsertScript = require('../db/scripts/userInsertScript');
-const wishInsertScript = require('../db/scripts/wishInsertScript');
-
-const insertUserWish = (wish, uid) => {
-  db.run(
-    wishInsertScript,
-    {
-      $name: wish,
-      $uid: uid,
-    },
-    err => {
-      if (err) return err;
-    }
-  );
-};
 
 const signUpService = ({ name, surname, wishes }, callback) => {
   db.run(
@@ -29,7 +16,7 @@ const signUpService = ({ name, surname, wishes }, callback) => {
         if (!wishes) throw new Error('Wishlist must be completed');
         else {
           for (const wish of wishes) {
-            insertUserWish(wish, this.lastID);
+            insertUserWishService(wish, this.lastID);
           }
         }
       } catch (e) {
