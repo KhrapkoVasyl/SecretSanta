@@ -10,7 +10,6 @@ const shuffleController = (req, res) => {
         message: err.message,
       });
     }
-    console.log('sdsdadsa');
     return res.status(201).json({ status: 'success' });
   });
 };

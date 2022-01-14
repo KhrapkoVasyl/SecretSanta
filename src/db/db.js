@@ -2,7 +2,10 @@
 
 const sqlite3 = require('sqlite3').verbose();
 const createTables = require('../utils/createTables');
-const tableCreationScripts = require('./scripts/tableСreationScripts');
+const {
+  userTableScript,
+  wishTableScript,
+} = require('./scripts/tableСreationScripts');
 const eventEmitter = require('../utils/eventEmitter');
 
 const db = new sqlite3.Database(`${__dirname}/../../data/database.db`, err => {
@@ -10,7 +13,10 @@ const db = new sqlite3.Database(`${__dirname}/../../data/database.db`, err => {
     return console.error(err.message);
   }
 
-  createTables(db, tableCreationScripts);
+  createTables(db, {
+    userTableScript,
+    wishTableScript,
+  });
   console.log('Connected to the database');
   eventEmitter.emit('database connected');
 });

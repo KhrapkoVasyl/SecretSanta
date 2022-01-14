@@ -21,7 +21,7 @@ CREATE TABLE IF NOT EXISTS "wish"
 `;
 
 const santaForUserTableScript = `
-CREATE TABLE IF NOT EXISTS "santa_for_user"
+CREATE TABLE "santa_for_user"
 (
       id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
       santa_id INTEGER  NOT NULL,
@@ -30,8 +30,9 @@ CREATE TABLE IF NOT EXISTS "santa_for_user"
                   ON DELETE NO ACTION ON UPDATE NO ACTION
       FOREIGN KEY (user_id) REFERENCES "user" (id)
                   ON DELETE NO ACTION ON UPDATE NO ACTION
-  );
+);
   `;
+
 module.exports = {
   userTableScript,
   wishTableScript,
