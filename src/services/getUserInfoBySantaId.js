@@ -5,12 +5,12 @@ const db = require('../db/db');
 const getUserBySantaIdScript = require('../db/scripts/getUserBySantaIdScript');
 const getAllUserWishesScript = require('../db/scripts/getAllUserWishesScript');
 
-const getRecipientBySantaIdService = (id, callback) => {
+const getUserInfoBySantaId = (id, callback) => {
   db.get(getUserBySantaIdScript, [id], (err, user) => {
-    if (err) console.log(err);
     if (!user) {
       err = new Error(`No user found with the id ${id}`);
     }
+    if (err) return callback(err);
     db.all(getAllUserWishesScript, [user.id], (err, wishes) => {
       delete user.id;
       wishes = wishes.map(el => el.name);
@@ -20,4 +20,4 @@ const getRecipientBySantaIdService = (id, callback) => {
   });
 };
 
-module.exports = getRecipientBySantaIdService;
+module.exports = getUserInfoBySantaId;

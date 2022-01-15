@@ -1,8 +1,8 @@
 'use strict';
 
 const db = require('../db/db');
-const getAllUsersIdService = require('./getAllUsersIdService');
-const pairSantaUserService = require('./pairSantaUserService');
+const getAllUsersId = require('./getAllUsersId');
+const insertSantaUserPair = require('./insertSantaUserPair');
 
 const {
   santaForUserTableScript,
@@ -12,7 +12,7 @@ const shuffleArray = require('../utils/shuffleArray');
 const { MIN_PLAYERS_NUMBER } = require('../config');
 
 const shuffleService = callback => {
-  getAllUsersIdService((err, santasIdArr) => {
+  getAllUsersId((err, santasIdArr) => {
     if (santasIdArr.length < MIN_PLAYERS_NUMBER) {
       err = new Error(
         `The number of players must be at least ${MIN_PLAYERS_NUMBER}`
@@ -22,7 +22,7 @@ const shuffleService = callback => {
     db.run(santaForUserTableScript, err => {
       const uidArr = shuffleArray(santasIdArr);
 
-      pairSantaUserService(err, { santasIdArr, uidArr }, callback);
+      insertSantaUserPair(err, { santasIdArr, uidArr }, callback);
     });
   });
 };

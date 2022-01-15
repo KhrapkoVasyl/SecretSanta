@@ -5,16 +5,14 @@ const db = require('../db/db');
 const wishInsertScript = require('../db/scripts/wishInsertScript');
 
 const insertUserWish = (wish, uid) => {
-  db.run(
-    wishInsertScript,
-    {
+  try {
+    db.run(wishInsertScript, {
       $name: wish,
       $uid: uid,
-    },
-    err => {
-      if (err) throw err;
-    }
-  );
+    });
+  } catch (err) {
+    console.log(err);
+  }
 };
 
 module.exports = insertUserWish;
