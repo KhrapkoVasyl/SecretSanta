@@ -1,6 +1,6 @@
 'use strict';
 
-function shuffleArray(arr) {
+const shuffleArray = arr => {
   const arrCopy = arr.slice();
   const resultArr = [];
 
@@ -17,6 +17,6 @@ function shuffleArray(arr) {
   resultArr[tmpIndex] = lastElement;
 
   return resultArr;
-}
+};
 
 module.exports = shuffleArray;
