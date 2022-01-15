@@ -31,7 +31,7 @@ const signUpService = ({ name, surname, wishes }, callback) => {
         } catch (e) {
           err = e;
         } finally {
-          callback(err);
+          callback(err, this.lastID);
         }
       }
     );
