@@ -1,8 +1,14 @@
 'use strict';
 
+const { validationResult } = require('express-validator');
 const signUpService = require('../services/signUpService');
 
 const signUpController = (req, res) => {
+  const errors = validationResult(req);
+  console.log(errors.array());
+  if (!errors.isEmpty()) {
+    return res.status(400).json({ status: 'fail', errors: errors.array() });
+  }
   signUpService(req.body, (err, id) => {
     if (err) {
       return res.status(404).json({
