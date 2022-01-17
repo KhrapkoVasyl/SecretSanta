@@ -13,8 +13,6 @@ const signUpService = ({ name, surname, wishes }, callback) => {
         `Maximum number of players (${MAX_PLAYERS_NUMBER}) reached`
       );
     }
-    if (!wishes || !wishes.length)
-      err = new Error('Wishlist must be completed');
     if (err) return callback(err);
     db.run(
       userInsertScript,
