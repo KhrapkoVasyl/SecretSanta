@@ -1,6 +1,6 @@
 'use strict';
 
-const { check, body } = require('express-validator');
+const { body } = require('express-validator');
 const { MAX_WISHES_NUMBER } = require('../config');
 
 const signUpValidationScheme = [
@@ -14,16 +14,8 @@ const signUpValidationScheme = [
     .not()
     .isEmpty()
     .withMessage('Wishlist must be completed')
-    .custom(wishArr => {
-      if (wishArr.length > MAX_WISHES_NUMBER) {
-        console.log('hello');
-        throw new Error(
-          // eslint-disable-next-line max-len
-          `The number of given wishes is greater than the allowed maximum (${MAX_WISHES_NUMBER})`
-        );
-      }
-      return true;
-    }),
+    .custom(isWishArrLessThanMaximum)
+    .custom(isWishesListAnArray),
   body('wishes.*')
     .trim()
     .not()
@@ -32,5 +24,20 @@ const signUpValidationScheme = [
     .isLength({ min: 3 })
     .withMessage('Wish name must contain at least 3 letters'),
 ];
+
+function isWishArrLessThanMaximum(wishArr) {
+  if (wishArr.length > MAX_WISHES_NUMBER)
+    throw new Error(
+      // eslint-disable-next-line max-len
+      `The number of given wishes is greater than the allowed maximum (${MAX_WISHES_NUMBER})`
+    );
+  return true;
+}
+
+function isWishesListAnArray(wishArr) {
+  if (!Array.isArray(wishArr)) throw new Error(`Wishes list must be an array`);
+
+  return true;
+}
 
 module.exports = signUpValidationScheme;
