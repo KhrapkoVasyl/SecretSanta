@@ -6,11 +6,7 @@ const app = require('./app');
 const eventEmitter = require('./utils/eventEmitter');
 
 eventEmitter.on('database connected', () => {
-  app.listen(
-    process.env.PORT || 3000,
-    process.env.HOST_NAME || 'localhost',
-    () => {
-      console.log('server running');
-    }
-  );
+  app.listen(process.env.PORT || 3000, process.env.HOST || 'localhost', () => {
+    console.log('server running');
+  });
 });

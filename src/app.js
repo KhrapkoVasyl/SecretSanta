@@ -2,7 +2,7 @@
 
 const express = require('express');
 
-const signUpValidationScheme = require('./utils/signUpValidationScheme');
+const signUpValidationScheme = require('./validation/signUpValidationScheme');
 const signUpController = require('./controllers/signUpController');
 const shuffleController = require('./controllers/shuffleController');
 const getUserBySanta = require('./controllers/getUserBySanta');
