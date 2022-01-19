@@ -9,7 +9,7 @@ const {
 } = require('../db/scripts/tableСreationScripts');
 
 const shuffleArray = require('../utils/shuffleArray');
-const { MIN_PLAYERS_NUMBER } = require('../config');
+const { MIN_PLAYERS_NUMBER, MSG_TABLE_ALREADY_EXISTS } = require('../config');
 
 const shuffleService = callback => {
   getAllUsersId((err, santasIdArr) => {
@@ -20,6 +20,8 @@ const shuffleService = callback => {
     }
     if (err) return callback(err);
     db.run(santaForUserTableScript, err => {
+      if (err?.message === MSG_TABLE_ALREADY_EXISTS)
+        err = new Error('Pairs of santa and users have already been made');
       const uidArr = shuffleArray(santasIdArr);
 
       insertSantaUserPair(err, { santasIdArr, uidArr }, callback);
