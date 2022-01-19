@@ -50,8 +50,6 @@ Make sure you have [Node.js](http://nodejs.org/) installed.
    ```sh
    PORT=PORT
    HOST=HOST
-
-
    ```
 
 4. Start the application:
@@ -60,7 +58,7 @@ Make sure you have [Node.js](http://nodejs.org/) installed.
    npm start
    ```
 
-   This command uses `sh nodemon`. Type `rs` in propmt in order to restart the server.
+   This command uses `nodemon`. Type `rs` in propmt in order to restart the server.
 
 ## License
 

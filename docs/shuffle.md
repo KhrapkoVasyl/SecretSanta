@@ -28,7 +28,7 @@ Santa user pairs are determined and written to the database.
 
 **Condition** : If the number of registered players is less than the minimum value.
 
-**Code** : `404 NOT FOUND`
+**Code** : `400 Bad Request`
 
 **Content**
 
@@ -43,7 +43,7 @@ Santa user pairs are determined and written to the database.
 
 **Condition** : If pairs have already been made.
 
-**Code** : `404 NOT FOUND`
+**Code** : `400 Bad Request`
 
 **Content**
 

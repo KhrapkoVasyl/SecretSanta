@@ -5,7 +5,7 @@ const shuffleService = require('../services/shuffleService');
 const shuffleController = (req, res) => {
   shuffleService(err => {
     if (err) {
-      return res.status(404).json({
+      return res.status(400).json({
         status: 'fail',
         message: err.message,
       });
